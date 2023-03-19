@@ -13,6 +13,8 @@ html, body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  font-family: 'Hind', sans-serif;
+  background-color: var(--color2);
 }
 
 img, picture, video, canvas, svg {
@@ -26,4 +28,60 @@ input, button, textarea, select {
 
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
+}
+
+:root {
+  --font-size: 1.5rem;
+  --color1: #ed1c24;
+  --color2: #fdfffc;
+  --color3: #235789;
+  --color4: #f1d302;
+  --color5: #020100;
+}
+
+.header {
+  background-color: var(--color4);
+  border-bottom: 1px solid var(--color5);
+  box-shadow: 0px 3px 3px gray;
+}
+
+.header-content {
+  max-width: 1200px;
+  height: 100px;
+  display: flex;
+  padding: 5px 25px;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-content > h1 {
+  font-family: 'Fondamento', Arial, Helvetica, sans-serif;
+}
+
+.bookshelf {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--color3);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 15px;
+}
+
+.book {
+  height: 250px;
+  width: 200px;
+  display: inline-block;
+  background-color: pink;
+  border-radius: 5px;
+  margin: 0px 10px;
+  padding: 5px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
