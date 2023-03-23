@@ -19,6 +19,12 @@ function addBookToLibrary(title, author, pages, read, image) {
   myLibrary.push(newBook);
 }
 
+function createAllCards(library) {
+  for (let i = 0; i < library.length; i++) {
+    createLastCard(myLibrary[i]);
+  }
+}
+
 function createLastCard(element = myLibrary[myLibrary.length - 1]) {
   const book = document.createElement('div');
   const deleteIcon = document.createElement('div');
