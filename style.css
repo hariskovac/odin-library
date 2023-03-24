@@ -32,17 +32,18 @@ p, h1, h2, h3, h4, h5, h6 {
 
 :root {
   --font-size: 1.5rem;
-  --color1: #ed1c24;
+  --box-shadow: 3px 3px 3px gray;
+  --color1: #e71d36;
   --color2: #fdfffc;
-  --color3: #235789;
+  --color3: #3da5d9;
   --color4: #f1d302;
-  --color5: #020100;
+  --color5: #011627;
 }
 
 .header {
-  background-color: var(--color4);
+  background-color: var(--color1);
   border-bottom: 1px solid var(--color5);
-  box-shadow: 0px 3px 3px gray;
+  box-shadow: 0 3px 3px gray;
 }
 
 .header-content {
@@ -56,16 +57,31 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .header-content > h1 {
-  font-family: 'Fondamento', Arial, Helvetica, sans-serif;
+  color: var(--color2);
+  letter-spacing: 2px;
+  font-size: 2.5rem;
+}
+
+.btn {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid var(--color5);
+  background-color: var(--color4);
+}
+
+.btn:hover {
+  text-decoration: underline var(--color1) 3px;
 }
 
 .bookshelf {
   max-width: 1200px;
-  margin: 0 auto;
-  background-color: var(--color3);
+  margin: 15px auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  justify-items: center;
+  gap: 25px;
   padding: 15px;
 }
 
@@ -75,10 +91,12 @@ p, h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: pink;
+  background-color: var(--color3);
+  box-shadow: var(--box-shadow);
   border-radius: 5px;
   margin: 0px 10px;
-  padding: 5px;
+  padding: 10px;
+  font-size: 1.2rem;
 }
 
 .cover {
@@ -88,11 +106,4 @@ p, h1, h2, h3, h4, h5, h6 {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
 }
