@@ -1,6 +1,14 @@
 let myLibrary = [];
 
 const bookshelf = document.querySelector('.bookshelf');
+const newBookButton = document.querySelector('.new-btn');
+const cancelButton = document.querySelector('.cancel-btn');
+const formWrapper = document.querySelector('.form-wrapper');
+const overlay = document.querySelector('.overlay');
+
+newBookButton.addEventListener('click', openBookForm);
+cancelButton.addEventListener('click', closeBookForm);
+overlay.addEventListener('click', closeBookForm);
 
 function Book(title, author, pages, read, image) {
   this.title = title;
@@ -53,3 +61,19 @@ function createLastCard(element = myLibrary[myLibrary.length - 1]) {
 
   bookshelf.appendChild(book);
 }
+
+function openBookForm(event) {
+  formWrapper.style.display = 'block';
+  event.stopPropagation();
+}
+
+function closeBookForm () {
+  formWrapper.style.display = 'none';
+}
+
+document.addEventListener('click', function(event) {
+  // Hide the popup form if the user clicks outside of it
+  if (!formWrapper.contains(event.target)) {
+    formWrapper.style.display = 'none';
+  }
+});
