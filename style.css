@@ -62,7 +62,7 @@ p, h1, h2, h3, h4, h5, h6 {
   font-size: 2.5rem;
 }
 
-.btn {
+.new-btn {
   font-size: 1.2rem;
   font-weight: bold;
   padding: 10px 20px;
@@ -71,8 +71,9 @@ p, h1, h2, h3, h4, h5, h6 {
   background-color: var(--color4);
 }
 
-.btn:hover {
+.new-btn:hover {
   text-decoration: underline var(--color1) 3px;
+  cursor: pointer;
 }
 
 .bookshelf {
@@ -108,13 +109,22 @@ p, h1, h2, h3, h4, h5, h6 {
   background-position: center;
 }
 
+.form-wrapper {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .book-form {
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 15vw;
+  width: 300px;
   border-radius: 7px;
+  border: 1px solid #005b88;
   box-shadow: var(--box-shadow);
   background-color: var(--color3);
   padding: 15px;
@@ -137,11 +147,19 @@ input::-webkit-inner-spin-button {
 }
 
 input[type=number] {
-    -moz-appearance:textfield; 
+    -moz-appearance: textfield; 
 }
 
 .book-form > div {
   margin: 0 auto;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(150, 200, 255, 0.1);
 }
 
 .footer {

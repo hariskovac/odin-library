@@ -64,16 +64,18 @@ function createLastCard(element = myLibrary[myLibrary.length - 1]) {
 
 function openBookForm(event) {
   formWrapper.style.display = 'block';
+  overlay.style.display = "block"
   event.stopPropagation();
 }
 
 function closeBookForm () {
   formWrapper.style.display = 'none';
+  overlay.style.display = "none"
 }
 
 document.addEventListener('click', function(event) {
   // Hide the popup form if the user clicks outside of it
   if (!formWrapper.contains(event.target)) {
-    formWrapper.style.display = 'none';
+    closeBookForm();
   }
 });
