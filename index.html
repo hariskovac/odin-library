@@ -71,20 +71,20 @@
   <div class='form-wrapper'>
     <form class='book-form' action=''>
       <h2>Add New Book</h2>
-      <input type='text' name='title' placeholder='Title' required>
-      <input type='text' name='author' placeholder='Author' required>
-      <input type='number' name='pages' placeholder='Number of Pages'>
-      <input type='url' name='cover' placeholder='Link to cover image'>
+      <input type='text' name='title' placeholder='Title' required id='title'>
+      <input type='text' name='author' placeholder='Author' required id='author'>
+      <input type='number' name='pages' placeholder='Number of Pages' id='pages'>
+      <input type='url' name='cover' placeholder='Link to cover image' id='cover'>
       <p>Have you read this book?</p>
       <div>
-        <input type='radio' name='read' id='read-yes'>
+        <input type='radio' name='read' value='Read' id='read-yes'>
         <label for='read-yes'>Yes</label>
-        <input type='radio' name='read' id='read-no'>
+        <input type='radio' name='read' value='Unread' id='read-no'>
         <label for='read-no'>No</label>
       </div>
       <div>
-        <button class='add-btn' type='button'>Add Book</button>
-        <button class='cancel-btn' type='button'>Cancel</button>
+        <button class='add-btn' type='submit'>Add Book</button>
+        <button class='cancel-btn' type='submit'>Cancel</button>
       </div>
     </form>
   </div>
