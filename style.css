@@ -131,7 +131,7 @@ p, h1, h2, h3, h4, h5, h6 {
 .book-form input {
   border: none;
   border-radius: 5px;
-  padding: 5px;
+  padding: 10px;
 }
 
 input:focus {
