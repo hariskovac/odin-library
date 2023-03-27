@@ -2,14 +2,13 @@ let myLibrary = [];
 
 const bookshelf = document.querySelector('.bookshelf');
 const newBookButton = document.querySelector('.new-btn');
-const addButton = document.querySelector('.add-btn');
 const cancelButton = document.querySelector('.cancel-btn');
 const formWrapper = document.querySelector('.form-wrapper');
 const form = document.querySelector('.book-form');
 const overlay = document.querySelector('.overlay');
 
 newBookButton.addEventListener('click', openBookForm);
-addButton.addEventListener('click', addBookToLibrary);
+form.addEventListener('submit', addBookToLibrary);
 cancelButton.addEventListener('click', closeBookForm);
 
 function Book(title, author, pages, read, image) {
@@ -24,12 +23,13 @@ Book.prototype.info = function() {
   return `${title} by ${author}, ${pages}, ${read}`
 }
 
-function addBookToLibrary() {
+function addBookToLibrary(event) {
+  event.preventDefault();
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const pages = document.getElementById('pages').value;
-  const read = document.querySelector('input[name="read"]:checked').value;
   const cover = document.getElementById('cover').value;
+  const read = document.getElementById('read').checked? "Read" : "Unread";
 
   const newBook = new Book(title, author, pages, read, cover);
   myLibrary.push(newBook);
@@ -63,6 +63,8 @@ function createLastCard(element = myLibrary[myLibrary.length - 1]) {
   readStatus.classList.toggle('read-status');
   readButton.classList.toggle('read-btn');
 
+  // object.onerror = function(){myScript};
+  cover.src = element.cover;
   title.textContent = element.title;
   author.textContent = element.author;
   pages.textContent = element.pages;
