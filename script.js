@@ -11,12 +11,12 @@ newBookButton.addEventListener('click', openBookForm);
 form.addEventListener('submit', addBookToLibrary);
 cancelButton.addEventListener('click', closeBookForm);
 
-function Book(title, author, pages, read, image) {
+function Book(title, author, pages, read, cover) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
-  this.image = image;
+  this.cover = cover;
 }
 
 Book.prototype.info = function() {
@@ -47,7 +47,7 @@ function createAllCards(library) {
 function createLastCard(element = myLibrary[myLibrary.length - 1]) {
   const book = document.createElement('div');
   const deleteIcon = document.createElement('div');
-  const cover = document.createElement('div');
+  const cover = document.createElement('img');
   const title = document.createElement('p');
   const author = document.createElement('p');
   const pages = document.createElement('p');
@@ -63,7 +63,6 @@ function createLastCard(element = myLibrary[myLibrary.length - 1]) {
   readStatus.classList.toggle('read-status');
   readButton.classList.toggle('read-btn');
 
-  // object.onerror = function(){myScript};
   cover.src = element.cover;
   title.textContent = element.title;
   author.textContent = element.author;
@@ -73,6 +72,18 @@ function createLastCard(element = myLibrary[myLibrary.length - 1]) {
   book.append(deleteIcon, cover, title, author, pages, readStatus, readButton);
 
   bookshelf.appendChild(book);
+  checkCovers();
+}
+
+function checkCovers() {
+  const covers = document.querySelectorAll('.cover');
+  covers.forEach((cover) => {
+    cover.onerror = () => {
+      cover.onerror = null;
+      cover.src = 'media/cover-placeholder.jpg';
+      console.log('error');
+    }
+  })
 }
 
 function openBookForm(event) {
