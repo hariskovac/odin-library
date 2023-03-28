@@ -32,7 +32,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 :root {
   --font-size: 1.5rem;
-  --box-shadow: 3px 3px 3px gray;
+  --box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.60);
   --color1: #e71d36;
   --color2: #fdfffc;
   --color3: #3da5d9;
@@ -99,12 +99,8 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .cover {
-  width: 180px;
   height: 200px;
-  background: url('https://miblart.com/wp-content/uploads/2020/01/crime-and-mystery-cover-scaled-1.jpeg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  border-radius: 3px;
 }
 
 .form-wrapper {
