@@ -3,6 +3,7 @@ let myLibrary = [];
 const bookshelf = document.querySelector('.bookshelf');
 const newBookButton = document.querySelector('.new-btn');
 const cancelButton = document.querySelector('.cancel-btn');
+const errorMessage = document.querySelector('.error');
 const formWrapper = document.querySelector('.form-wrapper');
 const form = document.querySelector('.book-form');
 const overlay = document.querySelector('.overlay');
@@ -28,6 +29,10 @@ function addBookToLibrary(event) {
   const read = document.getElementById('read').checked ? 'Read' : 'Unread';
 
   const newBook = new Book(title, author, pages, read, cover);
+  if (myLibrary.find(book => book.title === newBook.title)) {
+    errorMessage.style.display = 'block';
+    return;
+  }
   myLibrary.push(newBook);
 
   createCard();
@@ -41,7 +46,6 @@ function createCard(element = myLibrary[myLibrary.length - 1]) {
   const title = document.createElement('p');
   const author = document.createElement('p');
   const pages = document.createElement('p');
-  const readStatus = document.createElement('p');
   const readButton = document.createElement('button');
 
   book.classList.toggle('book');
@@ -50,7 +54,6 @@ function createCard(element = myLibrary[myLibrary.length - 1]) {
   title.classList.toggle('title');
   author.classList.toggle('author');
   pages.classList.toggle('pages');
-  readStatus.classList.toggle('read-status');
   readButton.classList.toggle('read-btn');
 
   deleteIcon.textContent = 'x';
@@ -61,12 +64,11 @@ function createCard(element = myLibrary[myLibrary.length - 1]) {
   title.textContent = `"${element.title}"`;
   author.textContent = `by ${element.author}`;
   pages.textContent = `${element.pages} pages`;
-  readStatus.textContent = element.read;
 
   deleteIcon.dataset.title = element.title;
   book.dataset.title = element.title;
   readButton.dataset.title = element.title;
-  book.append(deleteIcon, cover, title, author, pages, readStatus, readButton);
+  book.append(deleteIcon, cover, title, author, pages, readButton);
 
   bookshelf.appendChild(book);
   checkCovers();
@@ -107,6 +109,7 @@ function openBookForm(event) {
 
 function closeBookForm () {
   form.reset();
+  errorMessage.style.display = 'none';
   formWrapper.style.display = 'none';
   overlay.style.display = 'none';
 }
