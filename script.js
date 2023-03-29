@@ -36,17 +36,11 @@ function addBookToLibrary(event) {
   const newBook = new Book(title, author, pages, read, cover);
   myLibrary.push(newBook);
 
-  createLastCard();
+  createCard();
   closeBookForm();
 }
 
-function createAllCards(library) {
-  for (let i = 0; i < library.length; i++) {
-    createLastCard(myLibrary[i]);
-  }
-}
-
-function createLastCard(element = myLibrary[myLibrary.length - 1]) {
+function createCard(element = myLibrary[myLibrary.length - 1]) {
   const book = document.createElement('div');
   const deleteIcon = document.createElement('div');
   const cover = document.createElement('img');
@@ -68,9 +62,9 @@ function createLastCard(element = myLibrary[myLibrary.length - 1]) {
   deleteIcon.textContent = 'x';
   deleteIcon.addEventListener('click', deleteBook);
   cover.src = element.cover;
-  title.textContent = element.title;
-  author.textContent = element.author;
-  pages.textContent = element.pages;
+  title.textContent = `"${element.title}"`;
+  author.textContent = `by ${element.author}`;
+  pages.textContent = `${element.pages} pages`;
   readStatus.textContent = element.read;
 
   deleteIcon.dataset.title = element.title;
