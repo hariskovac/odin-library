@@ -29,7 +29,7 @@ function addBookToLibrary(event) {
   const author = document.getElementById('author').value;
   const pages = document.getElementById('pages').value;
   const cover = document.getElementById('cover').value;
-  const read = document.getElementById('read').checked? "Read" : "Unread";
+  const read = document.getElementById('read').checked ? "Read" : "Unread";
 
   const newBook = new Book(title, author, pages, read, cover);
   myLibrary.push(newBook);
@@ -69,6 +69,7 @@ function createLastCard(element = myLibrary[myLibrary.length - 1]) {
   pages.textContent = element.pages;
   readStatus.textContent = element.read;
 
+  book.dataset.index = myLibrary.length - 1;
   book.append(deleteIcon, cover, title, author, pages, readStatus, readButton);
 
   bookshelf.appendChild(book);
@@ -81,7 +82,6 @@ function checkCovers() {
     cover.onerror = () => {
       cover.onerror = null;
       cover.src = 'media/cover-placeholder.jpg';
-      console.log('error');
     }
   })
 }
