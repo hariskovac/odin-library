@@ -2,14 +2,12 @@ let myLibrary = [];
 
 const bookshelf = document.querySelector('.bookshelf');
 const newBookButton = document.querySelector('.new-btn');
-const deleteBookButton = document.querySelector('.delete-icon')
 const cancelButton = document.querySelector('.cancel-btn');
 const formWrapper = document.querySelector('.form-wrapper');
 const form = document.querySelector('.book-form');
 const overlay = document.querySelector('.overlay');
 
 newBookButton.addEventListener('click', openBookForm);
-deleteBookButton.addEventListener('click', deleteBook);
 form.addEventListener('submit', addBookToLibrary);
 cancelButton.addEventListener('click', closeBookForm);
 
@@ -21,17 +19,13 @@ function Book(title, author, pages, read, cover) {
   this.cover = cover;
 }
 
-Book.prototype.info = function() {
-  return `${title} by ${author}, ${pages}, ${read}`
-}
-
 function addBookToLibrary(event) {
   event.preventDefault();
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const pages = document.getElementById('pages').value;
   const cover = document.getElementById('cover').value;
-  const read = document.getElementById('read').checked ? "Read" : "Unread";
+  const read = document.getElementById('read').checked ? 'Read' : 'Unread';
 
   const newBook = new Book(title, author, pages, read, cover);
   myLibrary.push(newBook);
@@ -61,6 +55,8 @@ function createCard(element = myLibrary[myLibrary.length - 1]) {
 
   deleteIcon.textContent = 'x';
   deleteIcon.addEventListener('click', deleteBook);
+  readButton.addEventListener('click', toggleReadStatus);
+  readButton.textContent = element.read;
   cover.src = element.cover;
   title.textContent = `"${element.title}"`;
   author.textContent = `by ${element.author}`;
@@ -69,6 +65,7 @@ function createCard(element = myLibrary[myLibrary.length - 1]) {
 
   deleteIcon.dataset.title = element.title;
   book.dataset.title = element.title;
+  readButton.dataset.title = element.title;
   book.append(deleteIcon, cover, title, author, pages, readStatus, readButton);
 
   bookshelf.appendChild(book);
@@ -79,6 +76,16 @@ function deleteBook() {
   const book = document.querySelector(`.book[data-title="${this.dataset.title}"]`);
   myLibrary.splice(myLibrary.findIndex(object => object.title === this.dataset.title), 1);
   bookshelf.removeChild(book);
+}
+
+function toggleReadStatus() {
+  const index = myLibrary.findIndex(object => object.title === this.dataset.title);
+  if (myLibrary[index].read === 'Read') {
+    myLibrary[index].read = 'Unread';
+  } else {
+    myLibrary[index].read = 'Read';
+  }
+  this.textContent = myLibrary[index].read;
 }
 
 function checkCovers() {
@@ -94,14 +101,14 @@ function checkCovers() {
 function openBookForm(event) {
   form.reset();
   formWrapper.style.display = 'block';
-  overlay.style.display = "block"
+  overlay.style.display = 'block';
   event.stopPropagation();
 }
 
 function closeBookForm () {
   form.reset();
   formWrapper.style.display = 'none';
-  overlay.style.display = "none"
+  overlay.style.display = 'none';
 }
 
 document.addEventListener('click', function(event) {
