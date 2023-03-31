@@ -41,7 +41,8 @@ function addBookToLibrary(event) {
 
 function createCard(element = myLibrary[myLibrary.length - 1]) {
   const book = document.createElement('div');
-  const deleteIcon = document.createElement('div');
+  const deleteWrapper = document.createElement('div');
+  const deleteIcon = document.createElement('img');
   const cover = document.createElement('img');
   const title = document.createElement('p');
   const author = document.createElement('p');
@@ -49,18 +50,23 @@ function createCard(element = myLibrary[myLibrary.length - 1]) {
   const readButton = document.createElement('button');
 
   book.classList.toggle('book');
+  deleteWrapper.classList.toggle('delete-wrapper');
   deleteIcon.classList.toggle('delete-icon');
   cover.classList.toggle('cover');
   title.classList.toggle('title');
   author.classList.toggle('author');
   pages.classList.toggle('pages');
   readButton.classList.toggle('read-btn');
+  readButton.classList.toggle('btn');
+  if (element.read === "Unread") {
+    readButton.classList.toggle('unread');
+  }
 
-  deleteIcon.textContent = 'x';
   deleteIcon.addEventListener('click', deleteBook);
   readButton.addEventListener('click', toggleReadStatus);
   readButton.textContent = element.read;
   cover.src = element.cover;
+  deleteIcon.src = 'media/close-icon.svg';
   title.textContent = `"${element.title}"`;
   author.textContent = `by ${element.author}`;
   pages.textContent = `${element.pages} pages`;
@@ -68,7 +74,8 @@ function createCard(element = myLibrary[myLibrary.length - 1]) {
   deleteIcon.dataset.title = element.title;
   book.dataset.title = element.title;
   readButton.dataset.title = element.title;
-  book.append(deleteIcon, cover, title, author, pages, readButton);
+  deleteWrapper.appendChild(deleteIcon);
+  book.append(deleteWrapper, cover, title, author, pages, readButton);
 
   bookshelf.appendChild(book);
   checkCovers();
@@ -87,6 +94,7 @@ function toggleReadStatus() {
   } else {
     myLibrary[index].read = 'Read';
   }
+  this.classList.toggle('unread');
   this.textContent = myLibrary[index].read;
 }
 
@@ -95,7 +103,7 @@ function checkCovers() {
   covers.forEach((cover) => {
     cover.onerror = () => {
       cover.onerror = null;
-      cover.src = 'media/cover-placeholder.jpg';
+      cover.src = 'media/cover-placeholder.png';
     }
   })
 }
