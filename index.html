@@ -11,43 +11,42 @@
   <title>Document</title>
 </head>
 <body>
-  <div class='overlay'></div>
-  
-  <header class='header'>
-    <div class='header-content'>
-      <h1>My Library</h1>
-      <button class='btn new-btn'>Add Book</button>
-    </div>
-  </header>
-
-  <div class='bookshelf'>
+  <div>
+    <div class='overlay'></div>
     
-  </div>
-
-  <div class='form-wrapper'>
-    <form class='book-form' action=''>
-      <h2>Add New Book</h2>
-      <input type='text' name='title' placeholder='Title' required id='title'>
-      <p class='error'>This book is already in your library.</p>
-      <input type='text' name='author' placeholder='Author' required id='author'>
-      <input type='number' name='pages' placeholder='Number of Pages' required id='pages'>
-      <input type='url' name='cover' placeholder='Link to cover image' id='cover'>
-      <div>
-        <label for='read'>Have you read this book?</label>
-        <input type='checkbox' name='read' id='read'>
+    <header class='header'>
+      <div class='header-content'>
+        <h1>My Library</h1>
+        <button class='btn new-btn'>Add Book</button>
       </div>
-
-      <div>
-        <button class='btn add-btn' type='submit'>Add Book</button>
-        <button class='btn cancel-btn' type='button'>Cancel</button>
-      </div>
-    </form>
+    </header>
+    <div class='bookshelf'>
+    
+    </div>
+    <div class='form-wrapper'>
+      <form class='book-form' action=''>
+        <h2>Add New Book</h2>
+        <input type='text' name='title' placeholder='Title' required id='title'>
+        <p class='error'>This book is already in your library.</p>
+        <input type='text' name='author' placeholder='Author' required id='author'>
+        <input type='number' name='pages' placeholder='Number of Pages' required id='pages'>
+        <input type='url' name='cover' placeholder='Link to cover image' id='cover'>
+        <div>
+          <label for='read'>Have you read this book?</label>
+          <input type='checkbox' name='read' id='read'>
+        </div>
+        <div>
+          <button class='btn add-btn' type='submit'>Add Book</button>
+          <button class='btn cancel-btn' type='button'>Cancel</button>
+        </div>
+      </form>
+    </div>
+    
   </div>
 
   <footer class='footer'>
     Created by Haris
   </footer>
-
   <script src='script.js'></script>
 </body>
 </html>
