@@ -33,13 +33,13 @@ function addBookToLibrary(event) {
     errorMessage.style.display = 'block';
     return;
   }
-  myLibrary.push(newBook);
+  myLibrary.unshift(newBook);
 
   createCard();
   closeBookForm();
 }
 
-function createCard(element = myLibrary[myLibrary.length - 1]) {
+function createCard(element = myLibrary[0]) {
   const book = document.createElement('div');
   const deleteWrapper = document.createElement('div');
   const deleteIcon = document.createElement('img');
@@ -77,7 +77,7 @@ function createCard(element = myLibrary[myLibrary.length - 1]) {
   deleteWrapper.appendChild(deleteIcon);
   book.append(deleteWrapper, cover, title, author, pages, readButton);
 
-  bookshelf.appendChild(book);
+  bookshelf.insertBefore(book, bookshelf.firstChild);
   checkCovers();
 }
 
